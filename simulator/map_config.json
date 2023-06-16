@@ -1,0 +1,66 @@
+{
+    "origin": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 15.0
+    },
+    "distance": {
+        "x": 4,
+        "y": 4
+    },
+    "symbolToPrefabMap": [
+        {
+            "symbol": "T",
+            "prefabName": "Tree"
+        },
+        {
+            "symbol": "B",
+            "prefabName": "Tree 1",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "C",
+            "prefabName": "Tree1.5",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "D",
+            "prefabName": "Tree 2",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "E",
+            "prefabName": "Tree 3",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "F",
+            "prefabName": "Tree Fruit Variant",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "G",
+            "prefabName": "Tree 4",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "H",
+            "prefabName": "Tree 5",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "I",
+            "prefabName": "Tree 6",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "J",
+            "prefabName": "Tree 7",
+            "dataFolder": ""
+        },
+        {
+            "symbol": "A",
+            "prefabName": "Spawner"
+        }
+    ]
+}
