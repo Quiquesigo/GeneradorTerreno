@@ -1,0 +1,41 @@
+{
+    "fiveserver": {
+        "name": "fiveserver",
+        "at": "gtirouter.dsic.upv.es"
+    },
+    "agents": [
+        {
+            "name": "agente1",
+            "at": "gtirouter.dsic.upv.es",
+            "password": "xmppserver",
+            "folderCapacitySize": 80,
+            "imageFolderName": "captures",
+            "enableAgentCollision": true,
+            "prefabName": "Tractor",
+            "position": "Spawner 1",
+            "behaviour": "default"
+        },
+        {
+            "name": "agente2",
+            "at": "gtirouter.dsic.upv.es",
+            "password": "xmppserver",
+            "folderCapacitySize": 80,
+            "imageFolderName": "captures",
+            "enableAgentCollision": true,
+            "prefabName": "Tractor",
+            "position": "Spawner 2",
+            "behaviour": "default"
+        },
+        {
+            "name": "agente3",
+            "at": "gtirouter.dsic.upv.es",
+            "password": "xmppserver",
+            "folderCapacitySize": 80,
+            "imageFolderName": "captures",
+            "enableAgentCollision": true,
+            "prefabName": "Tractor",
+            "position": "Spawner 3",
+            "behaviour": "default"
+        }
+    ]
+}
