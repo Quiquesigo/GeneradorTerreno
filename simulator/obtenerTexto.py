@@ -69,7 +69,7 @@ def obtenerTextoConImagen(imagen):
             next_y=calcular_centro(contours[i+1],True)
             x=calcular_centro(contours[i],False)
             next_x=calcular_centro(contours[i+1],False)
-            if next_y - y < 30:
+            if next_y - y < 50:
                 # Ordenar por X
                 if x > next_x:
                     contours[i], contours[i+1] = next_contour, contour
@@ -86,7 +86,7 @@ def obtenerTextoConImagen(imagen):
         area = cv2.contourArea(contour)
         
         # Si el área es mayor que el umbral mínimo, dibujar un cuadrado que encierra el contorno
-        if area > 500:
+        if area > 500 and area < 5000:
             # Calcular los momentos del contorno
             M = cv2.moments(contour)
             # Calcular el centro del contorno
