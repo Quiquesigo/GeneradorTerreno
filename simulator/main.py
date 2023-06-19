@@ -90,7 +90,7 @@ def comprobar_preferencias(cord1,cord2):
         with open(prefs_path, 'w', encoding='utf-8') as f:
             json.dump(default_prefs, f, indent=2, ensure_ascii=False)
 
-        print(f'Preferences file created in {prefs_path}')
+        print(f'Preferencias creadas en la carpeta {prefs_path}\n Ejecute de nuevo el código para poner en marcha la aplicación')
 
 import tkinter as tk
 
@@ -119,47 +119,60 @@ def obtener_coordenadas():
     if response.status_code == 200:
         webbrowser.open(url)
 
+def cerrar_ventana():
+    ventana1.destroy()
 
+if os.path.isfile(prefs_path):
+    # Crear ventana
+    ventana = tk.Tk()
+    ventana.title("Ingresa las coordenadas")
+    ventana.geometry("340x160")
 
-# Crear ventana
-ventana = tk.Tk()
-ventana.title("Ingresa las coordenadas")
-ventana.geometry("340x160")
+    # Crear labels e inputs
+    label_titulo = tk.Label(ventana, text="INTRODUCE LAS COORDENADAS")
+    label_titulo2 = tk.Label(ventana, text="Hazlo con el siguiente formato: latitud,longitud")
+    label_titulo.pack()
+    label_titulo2.pack()
+    label_esquina_superior_derecha = tk.Label(ventana, text="Esquina superior izquierda")
+    label_esquina_superior_derecha.pack()
+    entrada_esquina_superior_derecha = tk.Entry(ventana)
+    entrada_esquina_superior_derecha.pack()
+    entrada_esquina_superior_derecha.bind('<KeyRelease>', lambda event: comprobar_entradas())
 
-# Crear labels e inputs
-label_titulo = tk.Label(ventana, text="INTRODUCE LAS COORDENADAS")
-label_titulo2 = tk.Label(ventana, text="Hazlo con el siguiente formato: latitud,longitud")
-label_titulo.pack()
-label_titulo2.pack()
-label_esquina_superior_derecha = tk.Label(ventana, text="Esquina superior izquierda")
-label_esquina_superior_derecha.pack()
-entrada_esquina_superior_derecha = tk.Entry(ventana)
-entrada_esquina_superior_derecha.pack()
-entrada_esquina_superior_derecha.bind('<KeyRelease>', lambda event: comprobar_entradas())
+    label_esquina_inferior_derecha = tk.Label(ventana, text="Esquina inferior derecha")
+    label_esquina_inferior_derecha.pack()
+    entrada_esquina_inferior_derecha = tk.Entry(ventana)
+    entrada_esquina_inferior_derecha.pack()
+    entrada_esquina_inferior_derecha.bind('<KeyRelease>', lambda event: comprobar_entradas())
 
-label_esquina_inferior_derecha = tk.Label(ventana, text="Esquina inferior derecha")
-label_esquina_inferior_derecha.pack()
-entrada_esquina_inferior_derecha = tk.Entry(ventana)
-entrada_esquina_inferior_derecha.pack()
-entrada_esquina_inferior_derecha.bind('<KeyRelease>', lambda event: comprobar_entradas())
+    # Crear botón
+    boton_obtener_imagen = tk.Button(ventana, text="Obtener imagen", command=obtener_imagen, state='disabled')
+    boton_obtener_imagen.pack()
+    '''
+    boton_coordenadas = tk.Button(ventana, text="Ir a Google Maps", command=obtener_coordenadas)
+    boton_coordenadas.pack()'''
 
-# Crear botón
-boton_obtener_imagen = tk.Button(ventana, text="Obtener imagen", command=obtener_imagen, state='disabled')
-boton_obtener_imagen.pack()
-'''
-boton_coordenadas = tk.Button(ventana, text="Ir a Google Maps", command=obtener_coordenadas)
-boton_coordenadas.pack()'''
-
-m = folium.Map(location= [39.4699, -0.3763], zoom_start=8)
-folium.TileLayer(tiles='https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-                 attr='Google',
-                 name='Google Satellite',
-                 max_zoom=20,
-                 subdomains=['mt0', 'mt1', 'mt2', 'mt3']).add_to(m)
-m.add_child(folium.ClickForMarker(popup= None))
-m.save('mapa.html')
-webbrowser.open_new_tab('mapa.html')
-ventana.mainloop()
+    m = folium.Map(location= [39.4699, -0.3763], zoom_start=8)
+    folium.TileLayer(tiles='https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+                    attr='Google',
+                    name='Google Satellite',
+                    max_zoom=20,
+                    subdomains=['mt0', 'mt1', 'mt2', 'mt3']).add_to(m)
+    m.add_child(folium.ClickForMarker(popup= None))
+    m.save('mapa.html')
+    webbrowser.open_new_tab('mapa.html')
+    ventana.mainloop()
+else:
+    with open(prefs_path, 'w', encoding='utf-8') as f:
+        json.dump(default_prefs, f, indent=2, ensure_ascii=False)
+    ventana1 = tk.Tk()
+    ventana1.title("Archivo de preferencias creado")
+    ventana1.geometry("340x80")
+    label_titulo1 = tk.Label(ventana1, text="Se ha creado el archivo de preferencias.\n Ejecute de nuevo el código para poner en marcha la aplicación")
+    boton_cerrar = tk.Button(ventana1, text="Cerrar", command=cerrar_ventana)
+    label_titulo1.pack()
+    boton_cerrar.pack()
+    ventana1.mainloop()
 
 
 
