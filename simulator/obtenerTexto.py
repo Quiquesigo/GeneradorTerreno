@@ -132,9 +132,18 @@ def obtenerTextoConImagen(imagen):
             auxY = y
 
     # Show images
-    cv2.imshow('satellite image', img)
-    cv2.imshow('vegetation detection', masked_img)
-    cv2.imshow('thresholded image', thr)
+    #cv2.imshow('satellite image', img)
+    #cv2.imshow('vegetation detection', masked_img)
+    #cv2.imshow('thresholded image', thr)
+    colores = f'colores.png'
+    filtro = f'filtro.png'
+    otsu = f'otsu.png'
+    if(cv2.imwrite(colores, img)):
+        print("Se ha creado la imagen correctamente con el nombre de "+colores)
+    if(cv2.imwrite(filtro, masked_img)):
+        print("Se ha creado la imagen correctamente con el nombre de "+filtro)
+    if(cv2.imwrite(otsu, thr)):
+        print("Se ha creado la imagen correctamente con el nombre de "+otsu)
     print(aux)
     cv2.waitKey(0) 
     cv2.destroyAllWindows()
